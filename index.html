@@ -261,95 +261,160 @@ footer{background:var(--navy);padding:1.75rem;text-align:center;font-size:11.5px
 }
 .hero-inner{position:relative;z-index:1}
 .hero-line{display:none}
-  /* ============================================
-   PRINT / PDF STYLES — @media print
-   ============================================ */
-@media print {
-  /* Скрываем всё лишнее */
+ {
+  /* ===== СКРЫВАЕМ ЛИШНЕЕ ===== */
   nav, .mobile-menu, .nav-hamburger,
-  .hero-btns, .hero-chips, .hero-photo-wrap,
-  .map-section, .cv-section, .pdf-modal-overlay,
-  .contact-form, .doc-btn, .cv-btn,
-  .hero-line, footer, .tr-grid, .achievements {
+  .hero-btns, .hero-chips,
+  .map-section,
+  .cv-section,
+  .pdf-modal-overlay,
+  .contact-form,
+  .doc-btn, .cv-btn,
+  .hero-line,
+  .tr-grid,
+  .achievements,
+  .btn-p, .btn-o {
     display: none !important;
   }
 
-  /* Сброс фонов и теней */
-  * {
-    background: white !important;
-    color: black !important;
-    box-shadow: none !important;
-    text-shadow: none !important;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-  }
-
+  /* ===== ПАТТЕРН НА ВЕСЬ PDF ===== */
   body {
     font-family: 'DM Sans', sans-serif;
     font-size: 10pt;
     line-height: 1.5;
     margin: 0;
     padding: 0;
+    background-color: #FFFFFF !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 
-  /* Каждая секция — новая страница если нужно */
-  section {
-    padding: 1.5rem 2rem !important;
-    page-break-inside: avoid;
+  /* Паттерн через псевдоэлемент на body */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCATmBOYDASIAAhEBAxEB/8QAHQABAAICAwEBAAAAAAAAAAAAAAEIBgcCBQkEA//EAGEQAQABAwMBBAQHCwcHCAcFCQABAgMEBQYRBxIhMUEIUWFxExQiMoGRoRUjMzdCUmJysbLBFnR1gqKz0SRDU5KTlMIXJ1VWY3PS8DREVKPD0+EYJTZGZIOEJjVFZYWV4v/EABsBAQADAQEBAQAAAAAAAAAAAAABBAUCAwYH/8QAOBEBAAIBAgMFBQYGAgMBAAAAAAECAwQREiExBRMyQVEUIjNhcQZCUoGRoRUjscHR8EPhJGLxNP/aAAwDAQACEQMRAD8AuUAAAAAAAAAAAAA");
+    background-repeat: repeat;
+    background-size: 90px 90px;
+    opacity: 0.04;
+    filter: grayscale(1) contrast(8);
+    pointer-events: none;
+    z-index: -1;
   }
 
+  /* ===== УБИРАЕМ ВСЕ ФОНЫ КРОМЕ БЕЛОГО ===== */
+  section, .edu-item, .exp-card,
+  .proj-card, .sk-cat, .rec-card,
+  .lang-card, .about {
+    background: white !important;
+    box-shadow: none !important;
+  }
+
+  /* ===== HERO ===== */
   .hero {
     min-height: auto !important;
-    padding: 2rem !important;
-    border-bottom: 2px solid #0B1F3A;
+    padding: 1.5rem 2rem !important;
+    background: white !important;
+    border-bottom: 2px solid #0B1F3A !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 
+  .hero-photo-wrap { display: none !important; }
+
   .hero-name {
-    font-size: 28pt !important;
+    font-size: 26pt !important;
     color: #0B1F3A !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 
   .hero-tag {
     color: #2E7D5E !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 
-  .hero-sub {
-    color: #555 !important;
-    font-size: 10pt !important;
+  .hero-sub { color: #555 !important; font-size: 10pt !important; }
+
+  /* ===== СЕКЦИИ ===== */
+  section { padding: 1.2rem 2rem !important; }
+
+  .sl {
+    color: #2E7D5E !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 
-  /* Заголовки секций */
-  .sl { color: #2E7D5E !important; }
-  .st { color: #0B1F3A !important; font-size: 16pt !important; }
-  .div { background: linear-gradient(90deg, #8B1A2E, #2E7D5E) !important; }
+  .st {
+    color: #0B1F3A !important;
+    font-size: 18pt !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
 
-  /* Education */
+  .div {
+    margin: 0.3rem 0 1rem !important;
+    background: linear-gradient(90deg, #8B1A2E, #2E7D5E) !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* ===== EDUCATION ===== */
   .edu-item {
     border: 1px solid #ddd !important;
     border-left: 3px solid #8B1A2E !important;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.5rem !important;
     padding: 0.75rem 1rem !important;
     page-break-inside: avoid;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 
-  .edu-year { color: #8B1A2E !important; border-right: 1px solid #ddd !important; }
+  .edu-year {
+    color: #8B1A2E !important;
+    border-right: 1px solid #ddd !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
   .edu-uni-name { color: #0B1F3A !important; }
-  .edu-score { background: rgba(46,125,94,0.1) !important; color: #2E7D5E !important; }
   .edu-docs { display: none !important; }
 
-  /* Experience */
+  .edu-score {
+    background: rgba(46,125,94,0.1) !important;
+    color: #2E7D5E !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* ===== EXPERIENCE ===== */
   .exp-card {
     border-left: 3px solid #8B1A2E !important;
     padding: 1rem !important;
     background: #f9f9f9 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 
   .exp-role { color: #0B1F3A !important; }
-  .exp-period { color: #2E7D5E !important; }
+  .exp-period {
+    color: #2E7D5E !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
   .exp-list li { color: #444 !important; }
-  .exp-list li::before { color: #8B1A2E !important; }
+  .exp-list li::before {
+    color: #8B1A2E !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
 
-  /* Projects — 2 колонки */
+  /* ===== PROJECTS ===== */
   .proj-grid {
     grid-template-columns: 1fr 1fr !important;
     gap: 0.75rem !important;
@@ -360,60 +425,105 @@ footer{background:var(--navy);padding:1.75rem;text-align:center;font-size:11.5px
     page-break-inside: avoid;
   }
 
+  /* Скрываем тёмный топ, показываем только номер */
   .proj-top {
     background: #0B1F3A !important;
-    height: 40px !important;
+    height: 32px !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
 
-  .proj-badge { color: rgba(255,255,255,0.8) !important; }
+  .proj-badge {
+    color: rgba(255,255,255,0.8) !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
   .proj-title { color: #0B1F3A !important; }
   .proj-desc { color: #555 !important; }
-  .proj-grade { color: #2E7D5E !important; }
-  .tag { background: #eee !important; color: #666 !important; }
+
+  .proj-grade {
+    color: #2E7D5E !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .tag {
+    background: #eee !important;
+    color: #666 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
   .doc-group { display: none !important; }
 
-  /* Skills — компактнее */
-  .sk-grid {
-    grid-template-columns: repeat(3, 1fr) !important;
-    gap: 0.75rem !important;
-  }
+  /* ===== SKILLS ===== */
+  .sk-grid { grid-template-columns: repeat(3, 1fr) !important; }
 
   .sk-cat {
     border: 1px solid #ddd !important;
     padding: 1rem !important;
   }
 
-  .sk-cat-title { color: #0B1F3A !important; border-color: #ddd !important; }
-  .sk-name { color: #333 !important; }
-  .sk-dot { background: #2E7D5E !important; }
+  .sk-cat-title {
+    color: #0B1F3A !important;
+    border-color: #ddd !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .sk-dot {
+    background: #2E7D5E !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
 
   .lang-grid { grid-template-columns: repeat(4, 1fr) !important; }
   .lang-card { border: 1px solid #ddd !important; }
   .lang-name { color: #0B1F3A !important; }
-  .lang-level { background: #0B1F3A !important; color: white !important; }
 
-  /* Рекомендации */
+  .lang-level {
+    background: #0B1F3A !important;
+    color: white !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* ===== RECOMMENDATIONS ===== */
   .rec-grid { grid-template-columns: repeat(3, 1fr) !important; }
   .rec-card { border: 1px solid #ddd !important; }
   .rec-name { color: #0B1F3A !important; }
-  .rec-title { color: #2E7D5E !important; }
-  .rec-grade { background: #eee !important; color: #0B1F3A !important; }
 
-  /* Контакты — только ссылки */
+  .rec-title {
+    color: #2E7D5E !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .rec-grade {
+    background: #eee !important;
+    color: #0B1F3A !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* ===== CONTACT ===== */
   .contact-intro { color: #555 !important; }
   .contact-link { color: #0B1F3A !important; }
-  .c-icon { border-color: #ddd !important; color: #0B1F3A !important; }
+  .c-icon {
+    border-color: #ddd !important;
+    color: #0B1F3A !important;
+  }
 
-  /* Разрывы страниц */
+  /* ===== РАЗРЫВЫ СТРАНИЦ ===== */
   #education { page-break-before: always; }
   #experience { page-break-before: auto; }
   #projects { page-break-before: always; }
   #skills { page-break-before: always; }
+  #recommendations { page-break-before: auto; }
   #contact { page-break-before: auto; }
 
-  /* Убираем анимации */
+  /* ===== УБИРАЕМ АНИМАЦИИ ===== */
   * {
     animation: none !important;
     transition: none !important;
