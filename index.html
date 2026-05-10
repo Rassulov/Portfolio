@@ -72,44 +72,6 @@ img {
 <link rel="apple-touch-icon" href="Logo_R.png">
 <style>
 /* === EDUCATION LOGOS === */
-.edu-item {
-    display: grid;
-    grid-template-columns: 120px 1fr auto; /* Фиксируем левую колонку с годами */
-    gap: 2rem;
-    position: relative;
-    overflow: hidden;
-    padding-right: 4rem; /* Отступ справа, чтобы текст не сливался с лого */
-    align-items: center;
-}
-.edu-logo-wrap {
-    position: absolute;
-    right: 0; /* Прижимаем контейнер к правому краю */
-    top: 0;
-    bottom: 0;
-    width: 40%; /* Контейнер занимает 40% ширины карточки справа */
-    display: flex;
-    align-items: center;
-    justify-content: flex-end; /* Логотип внутри прижат вправо */
-    z-index: 0;
-    pointer-events: none;
-}
-
-.edu-logo {
-    height: 120%; /* Размер логотипа (можно менять 120-150%) */
-    width: auto;
-    object-fit: contain;
-    opacity: 0.08;
-    filter: grayscale(100%);
-    transition: all 0.4s ease;
-    transform: translateX(20%); /* Немного "выводим" логотип за край для стиля */
-}
-
-/* При наведении */
-.edu-item:hover .edu-logo {
-    opacity: 0.4; /* Яркость при наведении */
-    filter: grayscale(0%);
-    transform: translateX(0%) scale(1.1); /* Логотип плавно выезжает и увеличивается */
-}
 /* === PROJECT FLIP CARDS === */
 .proj-card-flip{position:relative;perspective:1000px;cursor:pointer;min-height:200px}
 .proj-card-flip .proj-front{position:relative;height:200px;border-radius:5px;overflow:hidden;display:flex;align-items:flex-end;width:100%}
@@ -308,9 +270,13 @@ section{padding:5.5rem 2rem}
 .pdf-modal-body iframe{width:100%;height:100%;min-height:600px;border:none;display:block}
 footer{background:var(--navy);padding:1.75rem;text-align:center;font-size:11.5px;color:rgba(255,255,255,0.2)}
 /* === EDUCATION LOGOS === */
-.edu-item{grid-template-columns:110px 60px 1fr auto}
-.edu-logo-wrap{display:flex;align-items:center;justify-content:center;width:56px;height:56px;flex-shrink:0;align-self:center}
-.edu-logo{width:100%;height:100%;object-fit:contain;border-radius:4px}
+.edu-item{grid-template-columns:110px 1fr auto}
+.edu-logo-wrap{position:absolute;right:0;top:0;bottom:0;width:55%;display:flex;align-items:center;justify-content:flex-end;pointer-events:none;z-index:0}
+.edu-logo{height:140%;width:auto;object-fit:contain;opacity:0.06;filter:grayscale(100%);transform:translateX(15%);transition:opacity 0.45s ease,filter 0.45s ease,transform 0.45s ease}
+.edu-item:hover .edu-logo{opacity:0.85;filter:grayscale(0%);transform:translateX(5%)}
+.edu-year{position:relative;z-index:1}
+.edu-right{position:relative;z-index:1}
+.edu-docs{position:relative;z-index:1}
 /* === PROJECT FLIP CARDS === */
 .proj-card-flip{position:relative;perspective:1000px;cursor:pointer;min-height:200px}
 .proj-card-flip .proj-front{position:relative;height:200px;border-radius:5px;overflow:hidden;display:flex;align-items:flex-end;width:100%}
@@ -331,8 +297,8 @@ footer{background:var(--navy);padding:1.75rem;text-align:center;font-size:11.5px
 .lang-hover-flag .lang-flag-img{width:100%;height:100%;object-fit:cover;border-radius:3px}
 .lang-card-hover:hover .lang-default{opacity:0}
 .lang-card-hover:hover .lang-hover-flag{opacity:1}
-@media(max-width:960px){.edu-item{grid-template-columns:90px 50px 1fr}}
-@media(max-width:580px){.edu-item{grid-template-columns:1fr}.edu-logo-wrap{width:44px;height:44px}}
+@media(max-width:960px){.edu-item{grid-template-columns:90px 1fr auto}}
+@media(max-width:580px){.edu-item{grid-template-columns:1fr}.edu-logo-wrap{width:70%}}
 </style>
 </head>
 <body>
@@ -436,7 +402,6 @@ footer{background:var(--navy);padding:1.75rem;text-align:center;font-size:11.5px
 
       <div class="edu-item">
         <p class="edu-year">2024 – 2026</p>
-        <div class="edu-logo-wrap"><img src="sorbonne.jpg" class="edu-logo"></div>
         <div class="edu-right">
           <p class="edu-uni-name">Université Paris 1 Panthéon-Sorbonne</p>
           <p class="edu-location">Paris, France</p>
@@ -444,22 +409,22 @@ footer{background:var(--navy);padding:1.75rem;text-align:center;font-size:11.5px
           <p class="edu-note">Quantitative Techniques: 17.5/20 · Financial Mathematics: 16/20</p>
         </div>
         <div class="edu-docs"></div>
+        <div class="edu-logo-wrap"><img src="sorbonne.jpg" class="edu-logo"></div>
       </div>
 
       <div class="edu-item">
         <p class="edu-year">Jan–May 2023</p>
-        <div class="edu-logo-wrap"><img src="madrid.jpg" class="edu-logo"></div>
         <div class="edu-right">
           <p class="edu-uni-name">Universidad Complutense de Madrid</p>
           <p class="edu-location">Madrid, Spain</p>
           <p class="edu-deg" data-en="Business Administration — Erasmus Exchange" data-ru="Бизнес-администрирование — Erasmus">Business Administration — Erasmus Exchange</p>
         </div>
         <div class="edu-docs"></div>
+        <div class="edu-logo-wrap"><img src="madrid.jpg" class="edu-logo"></div>
       </div>
 
       <div class="edu-item">
         <p class="edu-year">2021 – 2024</p>
-        <div class="edu-logo-wrap"><img src="cassino.jpg" class="edu-logo"></div>
         <div class="edu-right">
           <p class="edu-uni-name">University of Cassino and Southern Lazio</p>
           <p class="edu-location">Cassino, Italy</p>
@@ -471,11 +436,11 @@ footer{background:var(--navy);padding:1.75rem;text-align:center;font-size:11.5px
           <button class="doc-btn" onclick="openPdf('Diploma — Cassino','Diploma_Cassino.pdf')">🎓 Diploma</button>
           <button class="doc-btn" onclick="openPdf('Transcript — Cassino','Diploma_Supplement_IT_EN.pdf')">📄 Transcript</button>
         </div>
+        <div class="edu-logo-wrap"><img src="cassino.jpg" class="edu-logo"></div>
       </div>
 
       <div class="edu-item">
         <p class="edu-year">2020 – 2021</p>
-        <div class="edu-logo-wrap"><img src="sdu.jpg" class="edu-logo"></div>
         <div class="edu-right">
           <p class="edu-uni-name">Suleyman Demirel University</p>
           <p class="edu-location">Almaty, Kazakhstan</p>
@@ -485,11 +450,11 @@ footer{background:var(--navy);padding:1.75rem;text-align:center;font-size:11.5px
         <div class="edu-docs">
           <button class="doc-btn" onclick="openPdf('Transcript — SDU','Diploma_SDU.pdf')">📄 Transcript</button>
         </div>
+        <div class="edu-logo-wrap"><img src="sdu.jpg" class="edu-logo"></div>
       </div>
 
       <div class="edu-item">
         <p class="edu-year">2009 – 2020</p>
-        <div class="edu-logo-wrap"><img src="school.jpg" class="edu-logo"></div>
         <div class="edu-right">
           <p class="edu-uni-name" data-en="School-Gymnasium №1, A.S. Pushkin" data-ru="Школа-гимназия №1 им. А.С. Пушкина">School-Gymnasium №1, A.S. Pushkin</p>
           <p class="edu-location" data-en="Shymkent, Kazakhstan" data-ru="Шымкент, Казахстан">Shymkent, Kazakhstan</p>
@@ -498,7 +463,8 @@ footer{background:var(--navy);padding:1.75rem;text-align:center;font-size:11.5px
         </div>
         <div class="edu-docs">
           <button class="doc-btn" onclick="openPdf('High School Diploma','Diploma_School.pdf')">🎓 Diploma</button>
-        </div>
+          </div>
+        <div class="edu-logo-wrap"><img src="school.jpg" class="edu-logo"></div>
       </div>
 
     </div>
