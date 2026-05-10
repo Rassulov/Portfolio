@@ -395,12 +395,14 @@ footer{background:var(--navy);padding:1.75rem;text-align:center;font-size:11.5px
       <div id="globe-container"></div>
       <div id="map-tooltip"></div>
     </div>
-   <div class="map-pins">
-  <div class="map-pin"><div class="pin-dot kz"></div><div><div class="pin-label" data-en="🇰🇿 Kazakhstan" data-ru="🇰🇿 Казахстан">🇰🇿 Kazakhstan</div><div class="pin-sub" data-en="Origin · 2009–2020" data-ru="Родина · 2009–2020">Origin · 2009–2020</div></div></div>
-  <div class="map-pin"><div class="pin-dot it"></div><div><div class="pin-label" data-en="🇮🇹 Italy" data-ru="🇮🇹 Италия">🇮🇹 Italy</div><div class="pin-sub" data-en="BSc · 2021–2024" data-ru="Бакалавриат · 2021–2024">BSc · 2021–2024</div></div></div>
-  <div class="map-pin"><div class="pin-dot es"></div><div><div class="pin-label" data-en="🇪🇸 Spain" data-ru="🇪🇸 Испания">🇪🇸 Spain</div><div class="pin-sub" data-en="Erasmus · 2023" data-ru="Эрасмус · 2023">Erasmus · 2023</div></div></div>
-  <div class="map-pin"><div class="pin-dot pt"></div><div><div class="pin-label" data-en="🇵🇹 Portugal" data-ru="🇵🇹 Португалия">🇵🇹 Portugal</div><div class="pin-sub" data-en="Internship · 2023–24" data-ru="Стажировка · 2023–24">Internship · 2023–24</div></div></div>
-  <div class="map-pin"><div class="pin-dot fr"></div><div><div class="pin-label" data-en="🇫🇷 France" data-ru="🇫🇷 Франция">🇫🇷 France</div><div class="pin-sub" data-en="MSc · 2024–now" data-ru="Магистратура · 2024–н.в.">MSc · 2024–now</div></div></div>
+    <div class="map-pins">
+      <div class="map-pin"><div class="pin-dot kz"></div><div><div class="pin-label" data-en="🇰🇿 Kazakhstan" data-ru="🇰🇿 Казахстан">🇰🇿 Kazakhstan</div><div class="pin-sub" data-en="Origin · 2009–2020" data-ru="Родина · 2009–2020">Origin · 2009–2020</div></div></div>
+      <div class="map-pin"><div class="pin-dot it"></div><div><div class="pin-label" data-en="🇮🇹 Italy" data-ru="🇮🇹 Италия">🇮🇹 Italy</div><div class="pin-sub" data-en="BSc · 2021–2024" data-ru="Бакалавриат · 2021–2024">BSc · 2021–2024</div></div></div>
+      <div class="map-pin"><div class="pin-dot es"></div><div><div class="pin-label" data-en="🇪🇸 Spain" data-ru="🇪🇸 Испания">🇪🇸 Spain</div><div class="pin-sub" data-en="Erasmus · 2023" data-ru="Эрасмус · 2023">Erasmus · 2023</div></div></div>
+      <div class="map-pin"><div class="pin-dot pt"></div><div><div class="pin-label" data-en="🇵🇹 Portugal" data-ru="🇵🇹 Португалия">🇵🇹 Portugal</div><div class="pin-sub" data-en="Internship · 2023–24" data-ru="Стажировка · 2023–24">Internship · 2023–24</div></div></div>
+      <div class="map-pin"><div class="pin-dot fr"></div><div><div class="pin-label" data-en="🇫🇷 France" data-ru="🇫🇷 Франция">🇫🇷 France</div><div class="pin-sub" data-en="MSc · 2024–now" data-ru="Магистратура · 2024–н.в.">MSc · 2024–now</div></div></div>
+    </div>
+  </div>
 </div>
 <!-- EDUCATION -->
 <section class="education" id="education">
@@ -862,7 +864,8 @@ tl.from('.hero-bg', {
 ScrollTrigger.batch('[data-reveal]',{onEnter:els=>gsap.from(els,{y:30,opacity:0,duration:0.7,stagger:0.1,ease:'power2.out',overwrite:true}),start:'top 88%',once:true});
 
 // LANG
-document.getElementById('langBtn').addEventListener('click',function(){
+let lang='en';
+  document.getElementById('langBtn').addEventListener('click',function(){
   lang=lang==='en'?'ru':'en';
   this.textContent=lang==='en'?'RU':'EN';
   document.querySelectorAll('[data-en]').forEach(el=>{
