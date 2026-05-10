@@ -16,9 +16,28 @@ img {
     object-fit: contain;
     border-radius: 4px;
 }
-@media(max-width:960px){.hero-inner,.contact-grid{grid-template-columns:1fr}.hero-photo-wrap{display:none}.proj-grid,.sk-grid,.rec-grid,.ach-grid{grid-template-columns:1fr 1fr}.lang-grid{grid-template-columns:repeat(2,1fr)}.edu-item{grid-template-columns:90px 50px 1fr;gap:1rem}.edu-docs{display:none}}
+@media(max-width:960px) {
+    .hero-inner, .contact-grid {grid-template-columns: 1fr}
+    .hero-photo-wrap {display: none}
+    .proj-grid, .sk-grid, .rec-grid, .ach-grid {grid-template-columns: 1fr 1fr}
+    .lang-grid {grid-template-columns: repeat(2, 1fr)}
+    /* Обновленная сетка для планшетов */
+    .edu-item {grid-template-columns: 90px 1fr; gap: 1rem; padding-right: 2rem;}
+    .edu-docs {display: none}
+}
+
 @media(max-width:768px){.nav-links{display:none}.nav-hamburger{display:flex}}
-@media(max-width:580px){.proj-grid,.sk-grid,.rec-grid,.ach-grid,.lang-grid,.tr-grid{grid-template-columns:1fr}.edu-item{grid-template-columns:1fr;gap:0.5rem}.edu-year{border-right:none;padding-right:0;border-bottom:1px solid var(--border);padding-bottom:0.5rem}.edu-docs{display:flex;flex-direction:row;flex-wrap:wrap;margin-top:0.5rem}.edu-logo-wrap{width:44px;height:44px}}
+
+@media(max-width:580px) {
+    .proj-grid, .sk-grid, .rec-grid, .ach-grid, .lang-grid, .tr-grid {grid-template-columns: 1fr}
+    /* Обновленная сетка для телефонов */
+    .edu-item {grid-template-columns: 1fr; gap: 0.5rem; padding-right: 1rem;} 
+    .edu-year {border-right: none; padding-right: 0; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem}
+    .edu-docs {display: flex; flex-direction: row; flex-wrap: wrap; margin-top: 0.5rem}
+    /* Делаем логотип чуть меньше для мобилок, чтобы не перекрывал текст */
+    .edu-logo-wrap {width: 60%; opacity: 0.3;} 
+    .edu-logo {height: 80%; transform: translateX(10%);}
+}
 .hero-line{display:none}
 .hero-bg {
     position: absolute;
@@ -54,39 +73,42 @@ img {
 <style>
 /* === EDUCATION LOGOS === */
 .edu-item {
-    grid-template-columns: 110px 1fr auto; 
+    display: grid;
+    grid-template-columns: 120px 1fr auto; /* Фиксируем левую колонку с годами */
+    gap: 2rem;
     position: relative;
-    overflow: hidden; 
-}
-.edu-year, .edu-right, .edu-docs {
-    position: relative;
-    z-index: 1; 
+    overflow: hidden;
+    padding-right: 4rem; /* Отступ справа, чтобы текст не сливался с лого */
+    align-items: center;
 }
 .edu-logo-wrap {
     position: absolute;
-    right: -20px; 
+    right: 0; /* Прижимаем контейнер к правому краю */
     top: 0;
     bottom: 0;
-    width: 350px;
-    height: 100%;
+    width: 40%; /* Контейнер занимает 40% ширины карточки справа */
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    z-index: 0; 
-    pointer-events: none; 
+    justify-content: flex-end; /* Логотип внутри прижат вправо */
+    z-index: 0;
+    pointer-events: none;
 }
+
 .edu-logo {
-    height: 150%; 
+    height: 120%; /* Размер логотипа (можно менять 120-150%) */
     width: auto;
     object-fit: contain;
-    opacity: 0.08; 
-    filter: grayscale(100%); 
-    transition: opacity 0.4s ease, filter 0.4s ease, transform 0.4s ease;
+    opacity: 0.08;
+    filter: grayscale(100%);
+    transition: all 0.4s ease;
+    transform: translateX(20%); /* Немного "выводим" логотип за край для стиля */
 }
+
+/* При наведении */
 .edu-item:hover .edu-logo {
-    opacity: 0.35; 
-    filter: grayscale(0%); 
-    transform: scale(1.05); 
+    opacity: 0.4; /* Яркость при наведении */
+    filter: grayscale(0%);
+    transform: translateX(0%) scale(1.1); /* Логотип плавно выезжает и увеличивается */
 }
 /* === PROJECT FLIP CARDS === */
 .proj-card-flip{position:relative;perspective:1000px;cursor:pointer;min-height:200px}
