@@ -17,42 +17,39 @@ img {
     border-radius: 4px;
 }
 @media(max-width:960px) {
-    .hero-inner, .contact-grid {grid-template-columns: 1fr}
-    .hero-photo-wrap {display: none}
-    .proj-grid, .sk-grid, .rec-grid, .ach-grid {grid-template-columns: 1fr 1fr}
-    .lang-grid {grid-template-columns: repeat(2, 1fr)}
-    /* Обновленная сетка для планшетов */
+    .hero-inner{grid-template-columns:1fr}
+    .hero-photo-wrap{display:none}
+    .contact-grid{grid-template-columns:1fr}
+    .proj-grid,.rec-grid,.ach-grid{grid-template-columns:1fr 1fr}
+    .sk-grid{grid-template-columns:1fr 1fr}
+    .lang-grid{grid-template-columns:repeat(2,1fr)}
     .edu-item{grid-template-columns:90px 1fr;gap:1rem}
 }
-
-@media(max-width:768px){.nav-links{display:none}.nav-hamburger{display:flex}}
 
 @media(max-width:580px) {
     section{padding:3rem 1.25rem}
     .hero{padding:70px 1.25rem 2.5rem}
-    .hero-photo-wrap{display:none}
     .hero-name{font-size:42px}
     .hero-sub{font-size:14px;margin-bottom:1.25rem}
     .hero-chips{gap:5px;margin-bottom:1.5rem}
     .chip{font-size:10px;padding:3px 9px}
-    .hero-btns{gap:0.75rem}
     .btn-p,.btn-o{padding:10px 18px;font-size:12px}
     .proj-grid,.sk-grid,.rec-grid,.ach-grid,.lang-grid,.tr-grid{grid-template-columns:1fr}
+    .contact-grid{grid-template-columns:1fr;gap:2rem}
     .edu-item{grid-template-columns:1fr;gap:0.5rem;padding:1.25rem}
-    .edu-year{border-right:none;padding-right:0;border-bottom:2px solid var(--border);padding-bottom:0.5rem;margin-bottom:0.25rem}
+    .edu-year{border-right:none;padding-right:0;border-bottom:2px solid var(--border);padding-bottom:0.5rem}
     .edu-logo-wrap{display:none}
-    .st{font-size:28px}
     .exp-card{padding:1.25rem}
     .exp-role{font-size:18px}
     .exp-list li{font-size:13px}
-    .rec-grid,.ach-grid{grid-template-columns:1fr}
-    .contact-grid{grid-template-columns:1fr;gap:2rem}
+    .st{font-size:26px}
     .map-section{padding:2.5rem 1.25rem}
-    #globe-container{height:260px}
+    #globe-container{height:240px}
     .cv-section{padding:2.5rem 1.25rem}
     .cv-btns{flex-direction:column;align-items:stretch}
     .cv-btn{justify-content:center}
-    .sk-grid{grid-template-columns:1fr}
+    .map-pins{gap:0.5rem}
+    .map-pin{padding:5px 10px}
 }
 .hero-line{display:none}
 .hero-bg {
@@ -301,8 +298,6 @@ footer{background:var(--navy);padding:1.75rem;text-align:center;font-size:11.5px
 .lang-hover-flag .lang-flag-img{width:100%;height:100%;object-fit:cover;border-radius:3px}
 .lang-card-hover:hover .lang-default{opacity:0}
 .lang-card-hover:hover .lang-hover-flag{opacity:1}
-@media(max-width:960px){.edu-item{grid-template-columns:90px 1fr auto}}
-@media(max-width:580px){.edu-item{grid-template-columns:1fr}.edu-logo-wrap{width:70%}}
 </style>
 </head>
 <body>
