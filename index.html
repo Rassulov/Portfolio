@@ -203,6 +203,15 @@ section{padding:5.5rem 2rem}
 .edu-item:hover .edu-docs{transform:translate(0,-50%);opacity:1;pointer-events:all}
 .experience{background:var(--white)}
 .exp-card{background:var(--off);border:1px solid var(--border);border-radius:5px;padding:2rem;border-left:3px solid var(--red)}
+.exp-card{position:relative;overflow:hidden;cursor:default;min-height:160px}
+.exp-logo-bg{position:absolute;right:2rem;top:50%;transform:translateY(-50%);width:220px;height:220px;opacity:0.07;filter:grayscale(100%);transition:opacity 0.4s ease,filter 0.4s ease;pointer-events:none;z-index:0}
+.exp-logo-bg img{width:100%;height:100%;object-fit:contain}
+.exp-card:hover .exp-logo-bg{opacity:0.9;filter:grayscale(0%)}
+.exp-details{position:relative;z-index:1;max-height:0;overflow:hidden;transition:max-height 0.5s ease,opacity 0.4s ease;opacity:0}
+.exp-details.open{max-height:600px;opacity:1;margin-top:1.25rem}
+.exp-toggle-btn{position:relative;z-index:1;margin-top:1rem;background:transparent;border:1px solid rgba(11,31,58,0.2);color:var(--navy);padding:6px 16px;border-radius:3px;font-size:12px;cursor:pointer;font-family:var(--fb);opacity:0;pointer-events:none;transition:opacity 0.3s ease,background 0.2s,color 0.2s}
+.exp-card:hover .exp-toggle-btn{opacity:1;pointer-events:all}
+.exp-toggle-btn:hover{background:var(--navy);color:white}
 .exp-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.9rem;flex-wrap:wrap;gap:0.5rem}
 .exp-role{font-family:var(--fd);font-size:22px;color:var(--navy)}
 .exp-period{font-size:10.5px;color:var(--mal);letter-spacing:1.5px;text-transform:uppercase;padding-top:4px}
@@ -489,29 +498,32 @@ footer{background:var(--navy);padding:1.75rem;text-align:center;font-size:11.5px
     <p class="sl" data-en="Work Experience" data-ru="Опыт работы">Work Experience</p>
     <h2 class="st" data-en="Experience" data-ru="Опыт">Experience</h2>
     <div class="div"></div>
-    <div class="exp-card">
-      <div class="exp-head">
-        <div style="display:flex;align-items:flex-start;gap:1rem">
-          <img src="ndb.jpg">
-          <div>
-            <h3 class="exp-role" data-en="Financial Analyst Intern" data-ru="Стажёр-финансовый аналитик">Financial Analyst Intern</h3>
-            <p class="exp-company" data-en="NDB Technology · Nanotechnology Start-Up · San Francisco, USA (Remote from Lisbon, Portugal)" data-ru="NDB Technology · Нанотехнологический стартап · Сан-Франциско, США (удалённо из Лиссабона, Португалия)">NDB Technology · Nanotechnology Start-Up · San Francisco, USA (Remote from Lisbon, Portugal)</p>
-          </div>
-        </div>
-        <span class="exp-period" data-en="Nov 2023 – May 2024" data-ru="Ноя 2023 – Май 2024">Nov 2023 – May 2024</span>
-      </div>
-      <ul class="exp-list">
-        <li data-en="Mandated by the CEO to manage the migration of 1,700+ investor profiles across platforms; coordinated data transfer, resolved inconsistencies, and ensured data integrity throughout the process." data-ru="По поручению генерального директора руководил переносом более 1700 профилей инвесторов между платформами — координировал передачу данных, устранял расхождения и обеспечивал их целостность на всех этапах.">Mandated by the CEO to manage the migration of 1,700+ investor profiles across platforms; coordinated data transfer, resolved inconsistencies, and ensured data integrity throughout the process.</li>
-        <li data-en="Managed ongoing investor data operations: processed incoming requests, segmented investors by type (Angel, VC, etc.) and geography, and maintained structured, up-to-date documentation." data-ru="Вёл текущую работу с базой инвесторов: обрабатывал входящие запросы, сегментировал инвесторов по типу (Angel, VC и др.) и географии, поддерживал актуальность документации.">Managed ongoing investor data operations: processed incoming requests, segmented investors by type (Angel, VC, etc.) and geography, and maintained structured, up-to-date documentation.</li>
-        <li data-en="Conducted in-depth investigations by contacting former employees and the CFO's office, and obtaining access to email archives to reconstruct missing source data." data-ru="Проводил внутренние расследования: связывался с бывшими сотрудниками и офисом финансового директора, получал доступ к архивам переписки для восстановления утраченных данных.">Conducted in-depth investigations by contacting former employees and the CFO's office, and obtaining access to email archives to reconstruct missing source data.</li>
-        <li data-en="Prepared audit-ready documentation and deployed QuickBooks and CRM systems to streamline investor tracking and financial reporting workflows." data-ru="Подготовил документацию для аудита; вёл учёт инвесторов и финансовую отчётность в QuickBooks и CRM-системе.">Prepared audit-ready documentation and deployed QuickBooks and CRM systems to streamline investor tracking and financial reporting workflows.</li>
-        <li data-en="Coordinated and supervised intern teams, overseeing daily performance and leading onboarding and training of new staff." data-ru="Координировал работу команды стажёров, контролировал выполнение задач и самостоятельно проводил обучение новых сотрудников.">Coordinated and supervised intern teams, overseeing daily performance and leading onboarding and training of new staff.</li>
-      </ul>
-      <div style="margin-top:1rem">
-        <button class="doc-btn" onclick="openPdf('Internship Certificate — NDB Technology','Internship_NDB.pdf')" data-en="📄 View Internship Certificate" data-ru="📄 Справка о стажировке">📄 View Internship Certificate</button>
+<div class="exp-card">
+  <div class="exp-logo-bg"><img src="ndb.jpg" alt="NDB"></div>
+  <div style="position:relative;z-index:1;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:0.5rem">
+    <div style="display:flex;align-items:flex-start;gap:1rem">
+      <img src="ndb.jpg" style="width:56px;height:56px;object-fit:contain;border-radius:4px">
+      <div>
+        <h3 class="exp-role" data-en="Financial Analyst Intern" data-ru="Стажёр-финансовый аналитик">Financial Analyst Intern</h3>
+        <p class="exp-company" data-en="NDB Technology · Nanotechnology Start-Up · San Francisco, USA (Remote from Lisbon, Portugal)" data-ru="NDB Technology · Нанотехнологический стартап · Сан-Франциско, США (удалённо из Лиссабона, Португалия)">NDB Technology · Nanotechnology Start-Up · San Francisco, USA (Remote from Lisbon, Portugal)</p>
       </div>
     </div>
+    <span class="exp-period" data-en="Nov 2023 – May 2024" data-ru="Ноя 2023 – Май 2024">Nov 2023 – May 2024</span>
   </div>
+  <button class="exp-toggle-btn" id="expToggleBtn" onclick="toggleExpDetails()">More details ↓</button>
+  <div class="exp-details" id="expDetails">
+    <ul class="exp-list">
+      <li data-en="Mandated by the CEO to manage the migration of 1,700+ investor profiles across platforms; coordinated data transfer, resolved inconsistencies, and ensured data integrity throughout the process." data-ru="По поручению генерального директора руководил переносом более 1700 профилей инвесторов между платформами — координировал передачу данных, устранял расхождения и обеспечивал их целостность на всех этапах.">Mandated by the CEO to manage the migration of 1,700+ investor profiles across platforms; coordinated data transfer, resolved inconsistencies, and ensured data integrity throughout the process.</li>
+      <li data-en="Managed ongoing investor data operations: processed incoming requests, segmented investors by type (Angel, VC, etc.) and geography, and maintained structured, up-to-date documentation." data-ru="Вёл текущую работу с базой инвесторов: обрабатывал входящие запросы, сегментировал инвесторов по типу (Angel, VC и др.) и географии, поддерживал актуальность документации.">Managed ongoing investor data operations: processed incoming requests, segmented investors by type (Angel, VC, etc.) and geography, and maintained structured, up-to-date documentation.</li>
+      <li data-en="Conducted in-depth investigations by contacting former employees and the CFO's office, and obtaining access to email archives to reconstruct missing source data." data-ru="Проводил внутренние расследования: связывался с бывшими сотрудниками и офисом финансового директора, получал доступ к архивам переписки для восстановления утраченных данных.">Conducted in-depth investigations by contacting former employees and the CFO's office, and obtaining access to email archives to reconstruct missing source data.</li>
+      <li data-en="Prepared audit-ready documentation and deployed QuickBooks and CRM systems to streamline investor tracking and financial reporting workflows." data-ru="Подготовил документацию для аудита; вёл учёт инвесторов и финансовую отчётность в QuickBooks и CRM-системе.">Prepared audit-ready documentation and deployed QuickBooks and CRM systems to streamline investor tracking and financial reporting workflows.</li>
+      <li data-en="Coordinated and supervised intern teams, overseeing daily performance and leading onboarding and training of new staff." data-ru="Координировал работу команды стажёров, контролировал выполнение задач и самостоятельно проводил обучение новых сотрудников.">Coordinated and supervised intern teams, overseeing daily performance and leading onboarding and training of new staff.</li>
+    </ul>
+    <div style="margin-top:1rem">
+      <button class="doc-btn" onclick="openPdf('Internship Certificate — NDB Technology','Internship_NDB.pdf')" data-en="📄 View Internship Certificate" data-ru="📄 Справка о стажировке">📄 View Internship Certificate</button>
+    </div>
+  </div>
+</div>
 </section>
 <!-- PROJECTS -->
 <section class="projects" id="projects">
@@ -924,7 +936,13 @@ function closePdfModal(){
 }
 document.getElementById('pdfModal').addEventListener('click',function(e){if(e.target===this)closePdfModal();});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closePdfModal();});
-
+function toggleExpDetails(){
+  const details=document.getElementById('expDetails');
+  const btn=document.getElementById('expToggleBtn');
+  const isOpen=details.classList.contains('open');
+  details.classList.toggle('open');
+  btn.textContent=isOpen?'More details ↓':'Hide ↑';
+}
 // CONTACT FORM
 document.getElementById('contactForm').addEventListener('submit',async function(e){
   e.preventDefault();
