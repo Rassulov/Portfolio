@@ -496,6 +496,28 @@ footer{background:var(--navy);padding:1.75rem;text-align:center;font-size:11.5px
     <p class="sl" data-en="Work Experience" data-ru="Опыт работы">Work Experience</p>
     <h2 class="st" data-en="Experience" data-ru="Опыт">Experience</h2>
     <div class="div"></div>
+    <div class="exp-card">
+  <div class="exp-logo-bg"><img src="ey.jpg" alt="EY"></div>
+  <div style="position:relative;z-index:1;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:0.5rem">
+    <div style="display:flex;align-items:flex-start;gap:1rem">
+      <div>
+        <h3 class="exp-role" data-en="Business Valuation Intern" data-ru="Стажёр отдела оценки бизнеса">Business Valuation Intern</h3>
+        <p class="exp-company" data-en="EY (Ernst &amp; Young) · EY-Parthenon — Strategy and Transactions · Astana, Kazakhstan" data-ru="EY (Ernst &amp; Young) · EY-Parthenon — Strategy and Transactions · Астана, Казахстан">EY (Ernst &amp; Young) · EY-Parthenon — Strategy and Transactions · Astana, Kazakhstan</p>
+        <span class="exp-period" style="margin-top:4px;display:inline-block" data-en="September 2026 – November 2026" data-ru="Сентябрь 2026 – Ноябрь 2026">September 2026 – November 2026</span>
+      </div>
+    </div>
+  </div>
+  <button class="exp-toggle-btn" id="expToggleBtn2" onclick="toggleExpDetails2()">More details ↓</button>
+  <div class="exp-details" id="expDetails2" style="position:relative;z-index:5;background:var(--off);margin-top:1rem;padding:1.25rem;border-radius:4px;border:1px solid var(--border)">
+    <ul class="exp-list">
+      <li data-en="Contributing to the valuation of companies and financial assets operating in international and cross-border contexts within the Business Valuation team, part of EY-Parthenon Strategy and Transactions." data-ru="Участвую в оценке компаний и финансовых активов, работающих в международном и трансграничном контексте, в составе команды Business Valuation в рамках EY-Parthenon Strategy and Transactions.">Contributing to the valuation of companies and financial assets operating in international and cross-border contexts within the Business Valuation team, part of EY-Parthenon Strategy and Transactions.</li>
+      <li data-en="Supporting valuations of companies using discounted cash flow (DCF) analysis, international trading comparables and cross-border precedent transaction multiples." data-ru="Провожу оценку компаний с использованием метода дисконтированных денежных потоков (DCF), международных торговых мультипликаторов и трансграничных прецедентных сделок.">Supporting valuations of companies using discounted cash flow (DCF) analysis, international trading comparables and cross-border precedent transaction multiples.</li>
+      <li data-en="Analyzing international market data, industry trends and macroeconomic indicators relevant to companies operating across multiple countries." data-ru="Анализирую международные рыночные данные, отраслевые тенденции и макроэкономические показатели для компаний, работающих в нескольких странах.">Analyzing international market data, industry trends and macroeconomic indicators relevant to companies operating across multiple countries.</li>
+      <li data-en="Preparing financial models and valuation working papers under senior team supervision, in the context of cross-border M&amp;A and international transactions." data-ru="Готовлю финансовые модели и рабочие материалы по оценке под руководством старших членов команды в рамках трансграничных M&amp;A и международных сделок.">Preparing financial models and valuation working papers under senior team supervision, in the context of cross-border M&amp;A and international transactions.</li>
+      <li data-en="Drafting sections of valuation reports for international clients and participating in due diligence engagements involving multinational companies." data-ru="Составляю разделы отчётов об оценке для международных клиентов и участвую в due diligence по международным компаниям.">Drafting sections of valuation reports for international clients and participating in due diligence engagements involving multinational companies.</li>
+    </ul>
+  </div>
+</div>
 <div class="exp-card">
   <div class="exp-logo-bg"><img src="ndb.jpg" alt="NDB"></div>
   <div style="position:relative;z-index:1;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:0.5rem">
@@ -921,6 +943,13 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closePdfModal();});
 function toggleExpDetails(){
   const details=document.getElementById('expDetails');
   const btn=document.getElementById('expToggleBtn');
+  const isOpen=details.classList.contains('open');
+  details.classList.toggle('open');
+  btn.textContent=isOpen?'More details ↓':'Hide ↑';
+}
+function toggleExpDetails2(){
+  const details=document.getElementById('expDetails2');
+  const btn=document.getElementById('expToggleBtn2');
   const isOpen=details.classList.contains('open');
   details.classList.toggle('open');
   btn.textContent=isOpen?'More details ↓':'Hide ↑';
