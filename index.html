@@ -1017,7 +1017,6 @@ for(let i=0;i<order.length-1;i++){
 }
 const aExtra=projection(countries5['fr'].coords);const bExtra=projection(countries5['kz'].coords);
 if(aExtra&&bExtra)svg.append('line').attr('x1',aExtra[0]).attr('y1',aExtra[1]).attr('x2',bExtra[0]).attr('y2',bExtra[1]).attr('stroke','rgba(255,255,255,0.1)').attr('stroke-width',1).attr('stroke-dasharray','4 4');
-    }
   }catch(e){console.log('Map error:',e);}
 }
 document.addEventListener('DOMContentLoaded',initMap);
