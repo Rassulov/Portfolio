@@ -418,7 +418,6 @@ footer{background:var(--navy);padding:1.75rem;text-align:center;font-size:11.5px
   <div class="map-pin"><div class="pin-dot es"></div><div><div class="pin-label" data-en="🇪🇸 Spain" data-ru="🇪🇸 Испания">🇪🇸 Spain</div><div class="pin-sub" data-en="Erasmus · 2023" data-ru="Эрасмус · 2023">Erasmus · 2023</div></div></div>
   <div class="map-pin"><div class="pin-dot pt"></div><div><div class="pin-label" data-en="🇵🇹 Portugal" data-ru="🇵🇹 Португалия">🇵🇹 Portugal</div><div class="pin-sub" data-en="Internship · 2023–24" data-ru="Стажировка · 2023–24">Internship · 2023–24</div></div></div>
   <div class="map-pin"><div class="pin-dot fr"></div><div><div class="pin-label" data-en="🇫🇷 France" data-ru="🇫🇷 Франция">🇫🇷 France</div><div class="pin-sub" data-en="MSc · 2024–2026" data-ru="Магистратура · 2024–2026.">MSc · 2024–2026</div></div></div>
-  <div class="map-pin"><div class="pin-dot kz2"></div><div><div class="pin-label" data-en="🇰🇿 Kazakhstan" data-ru="🇰🇿 Казахстан">🇰🇿 Kazakhstan</div><div class="pin-sub" data-en="Internship (EY) · 2026" data-ru="Стажировка (EY) · 2026">Internship (EY) · 2026</div></div></div>
     </div>
   </div>
 </div>
@@ -970,12 +969,11 @@ document.getElementById('contactForm').addEventListener('submit',async function(
 
 // MAP
 const countries5={
-  kz:{name:'Kazakhstan',info:'Origin · School-Gymnasium №1, Shymkent (2009–2020)',coords:[66.9,48.0],color:'#C9A84C'},
+  kz:{name:'Kazakhstan',info:'Origin · School-Gymnasium №1, Shymkent (2009–2020)/ EY internship',coords:[66.9,48.0],color:'#C9A84C'},
   it:{name:'Italy',info:'BSc Economics & Business · University of Cassino (2021–2024)',coords:[12.5,41.9],color:'#2E7D5E'},
   es:{name:'Spain',info:'Erasmus · Universidad Complutense de Madrid (2023)',coords:[-3.7,40.4],color:'#8B1A2E'},
   pt:{name:'Portugal',info:'Financial Analyst Intern · NDB Inc. · Lisbon (2023–2024)',coords:[-8.2,39.4],color:'#5B8DD9'},
   fr:{name:'France',info:'MSc International Trade · Paris 1 Panthéon-Sorbonne (2024–2026)',coords:[2.35,48.85],color:'rgba(255,255,255,0.85)'},
-  kz2:{name:'',info:'Business Valuation Intern · EY-Parthenon (Sep–Nov 2026)',coords:[71.4,51.2],color:'#C9A84C'}
 };
 const labelOffsets={kz:[10,-12],it:[10,-12],es:[10,-12],pt:[-80,-12],fr:[10,-12],kz2:[10,12]};
 
@@ -1000,23 +998,14 @@ async function initMap(){
       const dot=svg.append('circle').attr('cx',x).attr('cy',y).attr('r',5).attr('fill',data.color).attr('stroke','white').attr('stroke-width',1.5).style('cursor','pointer');
       const[ox,oy]=labelOffsets[key]||[10,-12];
       svg.append('text').attr('x',x+ox).attr('y',y+oy).attr('fill','white').attr('font-size','11px').attr('font-family',"'DM Sans',sans-serif").attr('opacity',0.8).text(data.name);
-      dot.on('mouseover',function(event){
-  if(key==='kz'){return;}
+     dot.on('mouseover',function(event){
   d3.select(this).attr('r',8);tooltip.style.display='block';
   tooltip.innerHTML='<strong style="color:'+data.color+'">'+data.name+'</strong><br><span style="font-size:11px;color:rgba(255,255,255,0.65)">'+data.info+'</span>';
   const rect=container.getBoundingClientRect();tooltip.style.left=(event.clientX-rect.left+12)+'px';tooltip.style.top=(event.clientY-rect.top-10)+'px';
 }).on('mousemove',function(event){
-  if(key==='kz'){return;}
   const rect=container.getBoundingClientRect();tooltip.style.left=(event.clientX-rect.left+12)+'px';tooltip.style.top=(event.clientY-rect.top-10)+'px';
 }).on('mouseout',function(){d3.select(this).attr('r',5);tooltip.style.display='none';});
     });
-const order=['kz','it','es','pt','fr','kz2'];
-for(let i=0;i<order.length-1;i++){
-  const a=projection(countries5[order[i]].coords);const b=projection(countries5[order[i+1]].coords);
-  if(a&&b)svg.append('line').attr('x1',a[0]).attr('y1',a[1]).attr('x2',b[0]).attr('y2',b[1]).attr('stroke','rgba(255,255,255,0.1)').attr('stroke-width',1).attr('stroke-dasharray','4 4');
-}
-const aExtra=projection(countries5['fr'].coords);const bExtra=projection(countries5['kz'].coords);
-if(aExtra&&bExtra)svg.append('line').attr('x1',aExtra[0]).attr('y1',aExtra[1]).attr('x2',bExtra[0]).attr('y2',bExtra[1]).attr('stroke','rgba(255,255,255,0.1)').attr('stroke-width',1).attr('stroke-dasharray','4 4');
   }catch(e){console.log('Map error:',e);}
 }
 document.addEventListener('DOMContentLoaded',initMap);
